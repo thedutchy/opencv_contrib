@@ -80,7 +80,6 @@ Ptr<Dictionary> Dictionary::create(int nMarkers, int markerSize, int randomSeed)
  */
 Ptr<Dictionary> Dictionary::create(int nMarkers, int markerSize,
                                    const Ptr<Dictionary> &baseDictionary, int randomSeed) {
-
     return generateCustomDictionary(nMarkers, markerSize, baseDictionary, randomSeed);
 }
 
@@ -297,6 +296,7 @@ const Dictionary DICT_APRILTAG_25h9_DATA = Dictionary(Mat(35, (5*5 + 7)/8, CV_8U
 const Dictionary DICT_APRILTAG_36h10_DATA = Dictionary(Mat(2320, (6*6 + 7)/8, CV_8UC4, (uchar*)DICT_APRILTAG_36h10_BYTES), 6, 0);
 const Dictionary DICT_APRILTAG_36h11_DATA = Dictionary(Mat(587, (6*6 + 7)/8, CV_8UC4, (uchar*)DICT_APRILTAG_36h11_BYTES), 6, 0);
 
+const Dictionary DICT_MIP_36h12_DATA = Dictionary(Mat(250, (6*6 + 7)/8, CV_8UC4, (uchar*)DICT_MIP_36h12_BYTES), 6, 5);
 
 Ptr<Dictionary> getPredefinedDictionary(PREDEFINED_DICTIONARY_NAME name) {
     switch(name) {
@@ -348,6 +348,9 @@ Ptr<Dictionary> getPredefinedDictionary(PREDEFINED_DICTIONARY_NAME name) {
         return makePtr<Dictionary>(DICT_APRILTAG_36h10_DATA);
     case DICT_APRILTAG_36h11:
         return makePtr<Dictionary>(DICT_APRILTAG_36h11_DATA);
+
+    case DICT_MIP_36h12:
+        return makePtr<Dictionary>(DICT_MIP_36h12_DATA);
 
     }
     return makePtr<Dictionary>(DICT_4X4_50_DATA);
